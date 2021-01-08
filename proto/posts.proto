@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package Posts;
+
+import "google/protobuf/empty.proto";
+
+message Post {
+  int32 id = 1;
+  string title = 2;
+  string content = 3;
+}
+
+message GetPostsResponse {
+  repeated Post posts = 1;
+}
+
+message AddPostRequest {
+  Post post = 1;
+}
+
+message AddPostResponse {
+  Post post = 1;
+}
+
+service Posts {
+  rpc GetPosts(google.protobuf.Empty) returns (GetPostsResponse) {};
+  rpc AddPost(AddPostRequest) returns (AddPostResponse) {};
+}
