@@ -3,7 +3,7 @@ Sandbox for ts and gRPC.
 
 # やりたいこと
 
-- [ ] TypeScriptでgRPCのサーバーとクライアントを作ってみる
+- [ ] TypeScriptでgRPCのサーバーを立てて立ててクライアントでコールしてみる
 - [ ] gRPCのprotocolBufferから型定義を生成する
 - [ ] gRPCとは何か説明できる
 - [ ] protocolBufferとは何か説明できる
@@ -21,7 +21,7 @@ Sandbox for ts and gRPC.
 ## ServiceとかMessageってなに？
 
 Serviceはメソッドぽい。RPCかな？
-Messageは引数とかの型？
+Messageは引数とかの型？オブジェクト定義ぽい。型エイリアスとか？
 
 ## ServerSideのコードを成果物に型を生成できるのか？
 
@@ -84,3 +84,6 @@ https://github.com/grpc/grpc-node
 - [gRPC on Node.js with Buf and TypeScript — Part 1 | by Slavo Vojacek | Medium](https://slavovojacek.medium.com/grpc-on-node-js-with-buf-and-typescript-part-1-5aad61bab03b)
 - [いまさらだけどgRPCに入門したので分かりやすくまとめてみた - Qiita](https://qiita.com/gold-kou/items/a1cc2be6045723e242eb)
 - [Creating a CRUD API with Node, Express, and gRPC - LogRocket Blog](https://blog.logrocket.com/creating-a-crud-api-with-node-express-and-grpc/)
+- [gRPC protoc Node.js Client](https://docs.servicestack.net/grpc-nodejs)
+- [Quick start | Node | gRPC](https://grpc.io/docs/languages/node/quickstart/)
+- [Basics tutorial | Node | gRPC](https://grpc.io/docs/languages/node/basics/)
