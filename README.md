@@ -67,16 +67,6 @@ https://github.com/grpc/grpc-node/tree/master/packages/grpc-js
 
 Pure JavaScript gRPC Client
 
-
-
-
-https://github.com/grpc/grpc-node
-
-
-
-
-
-
 # 参考
 
 - [How to implement a gRPC client and server in TypeScript | by Mike Christensen | Blokur | Medium](https://medium.com/blokur/how-to-implement-a-grpc-client-and-server-in-typescript-fa3ac807855e)
@@ -87,3 +77,4 @@ https://github.com/grpc/grpc-node
 - [gRPC protoc Node.js Client](https://docs.servicestack.net/grpc-nodejs)
 - [Quick start | Node | gRPC](https://grpc.io/docs/languages/node/quickstart/)
 - [Basics tutorial | Node | gRPC](https://grpc.io/docs/languages/node/basics/)
+- [gRPC-Web + React + Node.js + TypeScriptでシンプルなチャットサービスを作る - Qiita](https://qiita.com/aanrii/items/699b4cda0babb3f47a2f)
