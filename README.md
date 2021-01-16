@@ -9,7 +9,7 @@ Sandbox for Next.js and gRPC with TypeScript.
 yarn dev:server
 ```
 
-2. Start Next.js
+2. Start client with Next.js.
 
 ```
 yarn dev:client
