@@ -5,29 +5,35 @@ import {
   ServerUnaryCall,
 } from "@grpc/grpc-js";
 import {SongsService} from "../../generated/songs_grpc_pb";
-import {GetSongsResponse, Song} from "../../generated/songs_pb";
+import {AddSongsRequest, AddSongsResponse, GetSongsResponse, Song} from "../../generated/songs_pb";
 
 // オンメモリで持つ
 const songs: Song[] = []
 
 function getSongs(
     call: ServerUnaryCall<void, GetSongsResponse>,
-    callback: sendUnaryData<Song[]>
+    callback: sendUnaryData<GetSongsResponse>
 ) {
-  callback(null, songs);
+  const songsResponse = new GetSongsResponse();
+  songs.push(new Song())
+  songsResponse.setSongsList(songs)
+
+  callback(null, songsResponse);
 }
 
 function addSongs(
-    call: ServerUnaryCall<Song, void>,
-    callback: sendUnaryData<Song>
+    call: ServerUnaryCall<AddSongsRequest, void>,
+    callback: sendUnaryData<AddSongsResponse>
 ) {
   const song = new Song();
-  song.setId(call.request.getId());
-  song.setArtist(call.request.getTitle());
-  song.setTitle(call.request.getTitle());
+  song.setId(call.request.getSong().getId())
+  song.setTitle(call.request.getSong().getTitle())
+  song.setArtist(call.request.getSong().getArtist())
 
+  const response = new AddSongsResponse();
+  response.setSong(song);
   songs.push(song)
-  callback(null, song);
+  callback(null, response);
 }
 
 function startServer() {

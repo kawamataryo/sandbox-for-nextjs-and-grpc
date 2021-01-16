@@ -1,6 +1,6 @@
 import * as express from "express";
 import { ParamsDictionary } from "express-serve-static-core";
-import { getSongs } from "./songsClient";
+import {addSong, getSongs} from "./songsClient";
 
 const app = express();
 
@@ -15,6 +15,20 @@ app.get<ParamsDictionary, any, any, any>(
 
       try {
         const result = await getSongs();
+        response.json({ result });
+      } catch (error) {
+        response.status(500).json({ error });
+      }
+    }
+);
+
+app.get<ParamsDictionary, any, any, any>(
+    "/add-song",
+    async (request, response) => {
+      const { name } = request.query;
+
+      try {
+        const result = await addSong();
         response.json({ result });
       } catch (error) {
         response.status(500).json({ error });
