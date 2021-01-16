@@ -5,19 +5,19 @@ Sandbox for Next.js and gRPC with TypeScript.
 
 # Get started
 
-1. Start mock server.
+Start mock server.
 
 ```
 yarn dev:server
 ```
 
-2. Start client with Next.js.
+Start client with Next.js.
 
 ```
 yarn dev:client
 ```
 
-# Generate code from Protocol Buffers
+Generate code from Protocol Buffers.
 
 ```
 yarn codegen
