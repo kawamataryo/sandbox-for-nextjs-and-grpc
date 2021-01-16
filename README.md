@@ -65,7 +65,14 @@ grpc_tools_node_protocをラップしている。
 ## grpc-js
 https://github.com/grpc/grpc-node/tree/master/packages/grpc-js
 
-Pure JavaScript gRPC Client
+gRPCで通信を行う際のクライアント。生成されたクライアント内部で使用される。
+
+## ts-protoc-gen
+https://github.com/improbable-eng/ts-protoc-gen
+
+grpc_tools_node_protocのプラグイン
+TypeScriptの型定義ファイルを生成してくれる。
+
 
 # 参考
 
@@ -78,3 +85,4 @@ Pure JavaScript gRPC Client
 - [Quick start | Node | gRPC](https://grpc.io/docs/languages/node/quickstart/)
 - [Basics tutorial | Node | gRPC](https://grpc.io/docs/languages/node/basics/)
 - [gRPC-Web + React + Node.js + TypeScriptでシンプルなチャットサービスを作る - Qiita](https://qiita.com/aanrii/items/699b4cda0babb3f47a2f)
+- [OK Google, Protocol Buffers から生成したコードを使って Node.js で gRPC 通信して | メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20201216-53796c2494/)
