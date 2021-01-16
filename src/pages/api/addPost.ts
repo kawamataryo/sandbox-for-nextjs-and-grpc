@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { AddPostRequest, Post } from '../../generated/posts_pb';
+import { AddPostRequest, Post } from '../../../generated/posts_pb';
 import { apiClient } from '../../lib/apiClient';
 
 export default async (

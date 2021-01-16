@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GetPostsResponse } from '../generated/posts_pb';
+import { GetPostsResponse } from '../../generated/posts_pb';
 import useSWR from 'swr';
 import Layout from '../components/layouts/Layout';
 import { Form, FormState } from '../components/Form';

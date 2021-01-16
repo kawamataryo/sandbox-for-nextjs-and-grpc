@@ -12,22 +12,23 @@ import {
 } from '../generated/posts_pb';
 import { PostsService } from '../generated/posts_grpc_pb';
 
+// オンメモリでデータを持つ
 const posts: Post[] = [];
 
-function getPosts(
+const getPosts = (
   call: ServerUnaryCall<void, GetPostsResponse>,
   callback: sendUnaryData<GetPostsResponse>
-) {
+) => {
   const res = new GetPostsResponse();
   res.setPostsList(posts);
 
   callback(null, res);
-}
+};
 
-function addPost(
+const addPost = (
   call: ServerUnaryCall<AddPostRequest, void>,
   callback: sendUnaryData<AddPostResponse>
-) {
+) => {
   const post = new Post();
   post.setId(posts.length + 1);
   post.setTitle(call.request.getPost()!.getTitle());
@@ -37,9 +38,9 @@ function addPost(
   const res = new AddPostResponse();
   res.setPost(post);
   callback(null, res);
-}
+};
 
-function startServer() {
+const startServer = () => {
   const server = new Server();
   server.addService(PostsService, { getPosts, addPost });
   server.bindAsync(
@@ -54,6 +55,6 @@ function startServer() {
       console.log(`server start listing on port ${port}`);
     }
   );
-}
+};
 
 startServer();

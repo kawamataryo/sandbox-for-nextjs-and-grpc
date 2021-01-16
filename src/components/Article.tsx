@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Post } from '../generated/posts_pb';
+import { Post } from '../../generated/posts_pb';
 
 type ArticleProps = {
   post: Post.AsObject;
