@@ -7,7 +7,6 @@ import {
 import {AddPostRequest, AddPostResponse, GetPostsResponse, Post} from "../generated/posts_pb";
 import {PostsService} from "../generated/posts_grpc_pb";
 
-// オンメモリで持つ
 const posts: Post[] = []
 
 function getPosts(
@@ -25,7 +24,7 @@ function addPost(
     callback: sendUnaryData<AddPostResponse>
 ) {
   const post = new Post();
-  post.setId(call.request.getPost()!.getId())
+  post.setId(posts.length + 1)
   post.setTitle(call.request.getPost()!.getTitle())
   post.setContent(call.request.getPost()!.getContent())
   posts.push(post)
