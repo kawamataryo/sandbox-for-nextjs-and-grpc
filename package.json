@@ -1,8 +1,13 @@
 {
+  "name": "sandbox-ts-grpc",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
+    "dev:bff": "next dev",
+    "build": "next build",
+    "start": "next start",
     "codegen": "grpc_tools_node_protoc -I ./proto --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:./generated --grpc_out=grpc_js:./generated --ts_out=service=grpc-node,mode=grpc-js:./generated ./proto/*.proto",
-    "dev:server": "nodemon src/server/index.ts",
-    "dev:bff": "nodemon src/client/index.ts"
+    "dev:server": "nodemon ./server/index.ts"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.3",
@@ -11,10 +16,22 @@
     "express": "^4.17.1",
     "google-protobuf": "^3.14.0",
     "grpc-tools": "^1.10.0",
+    "next": "10.0.5",
     "nodemon": "^2.0.7",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "swr": "^0.4.0",
     "ts-protoc-gen": "^0.14.0"
   },
   "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }

@@ -4,8 +4,8 @@ import {
   ServerCredentials,
   ServerUnaryCall,
 } from "@grpc/grpc-js";
-import {AddPostRequest, AddPostResponse, GetPostsResponse, Post} from "../../generated/posts_pb";
-import {PostsService} from "../../generated/posts_grpc_pb";
+import {AddPostRequest, AddPostResponse, GetPostsResponse, Post} from "../generated/posts_pb";
+import {PostsService} from "../generated/posts_grpc_pb";
 
 // オンメモリで持つ
 const posts: Post[] = []
@@ -25,9 +25,9 @@ function addPost(
     callback: sendUnaryData<AddPostResponse>
 ) {
   const post = new Post();
-  post.setId(call.request.getPost().getId())
-  post.setTitle(call.request.getPost().getTitle())
-  post.setContent(call.request.getPost().getContent())
+  post.setId(call.request.getPost()!.getId())
+  post.setTitle(call.request.getPost()!.getTitle())
+  post.setContent(call.request.getPost()!.getContent())
   posts.push(post)
 
   const res = new AddPostResponse();
