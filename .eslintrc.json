@@ -4,8 +4,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:prettier/react",
-    "plugin:prettier/@typescript-eslint"
+    "prettier/react",
+    "prettier/@typescript-eslint"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -13,12 +13,13 @@
     "prettier"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   },
   "globals": {
     "React": "writable"
   },
   "ignorePatterns": [
-    "./generated"
+    "generated"
   ]
 }
