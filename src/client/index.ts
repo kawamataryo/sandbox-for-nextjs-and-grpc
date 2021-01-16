@@ -1,6 +1,6 @@
 import * as express from "express";
 import { ParamsDictionary } from "express-serve-static-core";
-import {addSong, getSongs} from "./songsClient";
+import {addPost, getPosts} from "./postsClient";
 
 const app = express();
 
@@ -9,12 +9,12 @@ app.get("/", ({}, res) => {
 });
 
 app.get<ParamsDictionary, any, any, any>(
-    "/get-songs",
+    "/get-posts",
     async (request, response) => {
       const { name } = request.query;
 
       try {
-        const result = await getSongs();
+        const result = await getPosts();
         response.json({ result });
       } catch (error) {
         response.status(500).json({ error });
@@ -23,12 +23,12 @@ app.get<ParamsDictionary, any, any, any>(
 );
 
 app.get<ParamsDictionary, any, any, any>(
-    "/add-song",
+    "/add-post",
     async (request, response) => {
       const { name } = request.query;
 
       try {
-        const result = await addSong();
+        const result = await addPost();
         response.json({ result });
       } catch (error) {
         response.status(500).json({ error });

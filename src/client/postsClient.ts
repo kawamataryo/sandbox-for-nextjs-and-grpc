@@ -1,18 +1,18 @@
 // src/client/helloClient.ts
-import { SongsClient } from "../../generated/songs_grpc_pb";
 import { credentials } from "@grpc/grpc-js";
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
-import {AddSongsRequest, Song} from "../../generated/songs_pb";
+import {PostsClient} from "../../generated/posts_grpc_pb";
+import {AddPostRequest, Post} from "../../generated/posts_pb";
 
 const serverURL = "localhost:8888";
-const Client = new SongsClient(
+const Client = new PostsClient(
     serverURL,
     credentials.createInsecure()
 );
 
-export function getSongs() {
+export function getPosts() {
   return new Promise((resolve, reject) => {
-    Client.getSongs(new Empty(), (error, response) => {
+    Client.getPosts(new Empty(), (error, response) => {
       if (error) {
         console.error(error);
         reject({
@@ -26,17 +26,17 @@ export function getSongs() {
   });
 }
 
-export function addSong() {
+export function addPost() {
   return new Promise((resolve, reject) => {
-    const addSongsRequest = new AddSongsRequest();
-    const song = new Song()
-    song.setTitle('aaa')
-    song.setArtist('fff')
-    song.setId(1)
+    const addPostRequest = new AddPostRequest();
+    const post = new Post()
+    post.setId(1)
+    post.setTitle('aaa')
+    post.setContent('fff')
 
-    addSongsRequest.setSong(song)
+    addPostRequest.setPost(post)
 
-    Client.addSongs(addSongsRequest, (error, response) => {
+    Client.addPost(addPostRequest, (error, response) => {
       if (error) {
         console.error(error);
         reject({

@@ -4,41 +4,40 @@ import {
   ServerCredentials,
   ServerUnaryCall,
 } from "@grpc/grpc-js";
-import {SongsService} from "../../generated/songs_grpc_pb";
-import {AddSongsRequest, AddSongsResponse, GetSongsResponse, Song} from "../../generated/songs_pb";
+import {AddPostRequest, AddPostResponse, GetPostsResponse, Post} from "../../generated/posts_pb";
+import {PostsService} from "../../generated/posts_grpc_pb";
 
 // オンメモリで持つ
-const songs: Song[] = []
+const posts: Post[] = []
 
-function getSongs(
-    call: ServerUnaryCall<void, GetSongsResponse>,
-    callback: sendUnaryData<GetSongsResponse>
+function getPosts(
+    call: ServerUnaryCall<void, GetPostsResponse>,
+    callback: sendUnaryData<GetPostsResponse>
 ) {
-  const songsResponse = new GetSongsResponse();
-  songs.push(new Song())
-  songsResponse.setSongsList(songs)
+  const res = new GetPostsResponse();
+  res.setPostsList(posts)
 
-  callback(null, songsResponse);
+  callback(null, res);
 }
 
-function addSongs(
-    call: ServerUnaryCall<AddSongsRequest, void>,
-    callback: sendUnaryData<AddSongsResponse>
+function addPost(
+    call: ServerUnaryCall<AddPostRequest, void>,
+    callback: sendUnaryData<AddPostResponse>
 ) {
-  const song = new Song();
-  song.setId(call.request.getSong().getId())
-  song.setTitle(call.request.getSong().getTitle())
-  song.setArtist(call.request.getSong().getArtist())
+  const post = new Post();
+  post.setId(call.request.getPost().getId())
+  post.setTitle(call.request.getPost().getTitle())
+  post.setContent(call.request.getPost().getContent())
+  posts.push(post)
 
-  const response = new AddSongsResponse();
-  response.setSong(song);
-  songs.push(song)
-  callback(null, response);
+  const res = new AddPostResponse();
+  res.setPost(post);
+  callback(null, res);
 }
 
 function startServer() {
   const server = new Server();
-  server.addService(SongsService, { getSongs, addSongs });
+  server.addService(PostsService, { getPosts, addPost });
   server.bindAsync(
       `0.0.0.0:8888`,
       ServerCredentials.createInsecure(),
