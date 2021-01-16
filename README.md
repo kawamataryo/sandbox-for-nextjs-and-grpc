@@ -1,6 +1,8 @@
 # sandbox-ts-grpc
 Sandbox for Next.js and gRPC with TypeScript.
 
+![](https://i.gyazo.com/8768f29dd7de59ce2fd3c2daee8ebd66.png)
+
 # Get started
 
 1. Start mock server.
