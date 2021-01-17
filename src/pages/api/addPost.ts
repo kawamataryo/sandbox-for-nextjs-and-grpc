@@ -13,14 +13,14 @@ export default async (
     return;
   }
 
+  const addPostRequest = new AddPostRequest();
+  const post = new Post();
+  post.setTitle(body.title);
+  post.setContent(body.content);
+
+  addPostRequest.setPost(post);
+
   const res = await new Promise((resolve, reject) => {
-    const addPostRequest = new AddPostRequest();
-    const post = new Post();
-    post.setTitle(body.title);
-    post.setContent(body.content);
-
-    addPostRequest.setPost(post);
-
     apiClient.addPost(addPostRequest, (error, response) => {
       if (error) {
         console.error(error);
