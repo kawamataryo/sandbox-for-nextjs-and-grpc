@@ -8,8 +8,8 @@ Using gRPC in API Routes in Next.js.
 Clone repo and install dependencies.
 
 ```
-git clone https://github.com/kawamataryo/sandbox-next-js-with-grpc.git
-cd andbox-next-js-with-grpc
+git clone https://github.com/kawamataryo/sandbox-for-nextjs-and-grpc.git
+cd sandbox-for-nextjs-and-grpc
 yarn
 ```
 
