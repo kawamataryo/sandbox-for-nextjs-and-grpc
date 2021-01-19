@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  title: demo
+  version: '1.0'
+  description: OpenAPIのサンプルプロジェクト
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /posts:
+    parameters: []
+    get:
+      summary: 記事一覧
+      tags: []
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                Get User Alice Smith:
+                  value:
+                    id: 142
+                    firstName: Alice
+                    lastName: Smith
+                    email: alice.smith@gmail.com
+                    dateOfBirth: '1997-10-31'
+                    emailVerified: true
+                    signUpDate: '2019-08-24'
+        '404':
+          description: User Not Found
+      operationId: get-posts
+      description: 記事一覧の取得
+  /post:
+    post:
+      summary: 記事作成
+      operationId: post
+      responses:
+        '200':
+          description: User Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+              examples:
+                example-1:
+                  value:
+                    - id: 0
+                      title: '2019-08-24'
+                      content: string
+        '400':
+          description: Missing Required Information
+        '409':
+          description: Email Already Taken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 記事のタイトル
+                content:
+                  type: string
+                  description: 記事の内容
+              required:
+                - title
+                - content
+            examples:
+              Create User Bob Fellow:
+                value:
+                  title: Bob
+                  content: Fellow
+        description: Post the necessary fields for the API to create a new user.
+      description: 記事の作成
+    parameters: []
+components:
+  schemas:
+    Post:
+      title: Post
+      type: object
+      description: ''
+      x-examples:
+        Alice Smith:
+          id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        id:
+          type: integer
+          description: 記事のID
+        title:
+          type: string
+          format: date
+          description: 記事タイトル
+        content:
+          type: string
+          description: 記事の内容
+      required:
+        - id
+  securitySchemes: {}
