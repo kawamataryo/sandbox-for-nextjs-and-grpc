@@ -9,7 +9,7 @@
     "lint": "eslint",
     "codegen:grpc": "grpc_tools_node_protoc -I ./proto --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:./generated --grpc_out=grpc_js:./generated --ts_out=service=grpc-node,mode=grpc-js:./generated ./proto/*.proto",
     "dev:server": "nodemon ./server/index.ts",
-    "codegen:openapi": "openapi-generator-cli generate"
+    "codegen:openapi": "openapi-generator-cli generate -g typescript-fetch -i ./reference/*.yaml -o ./generated_openapi"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.3",
