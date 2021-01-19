@@ -85,14 +85,10 @@ components:
       type: object
       description: ''
       x-examples:
-        Alice Smith:
+        demo:
           id: 142
-          firstName: Alice
-          lastName: Smith
-          email: alice.smith@gmail.com
-          dateOfBirth: '1997-10-31'
-          emailVerified: true
-          signUpDate: '2019-08-24'
+          title: タイトル
+          content: 記事内容
       properties:
         id:
           type: integer
