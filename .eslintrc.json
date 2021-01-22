@@ -21,6 +21,7 @@
   },
   "ignorePatterns": [
     "generated",
-    "generated_openapi"
+    "generated_openapi_client",
+    "generated_openapi_server"
   ]
 }
