@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { AddPostRequest, Post } from '../../../generated/posts_pb';
-import { apiClient } from '../../lib/apiClient';
+import { PostsDB } from '../../lib/stubDB';
 
-export default async (
+export default (
   nextApiRequest: NextApiRequest,
   nextApiResponse: NextApiResponse
 ) => {
@@ -13,27 +12,13 @@ export default async (
     return;
   }
 
-  const addPostRequest = new AddPostRequest();
-  const post = new Post();
-  post.setTitle(body.title);
-  post.setContent(body.content);
+  const post = {
+    id: PostsDB.length + 1,
+    title: body.title,
+    content: body.content,
+  };
 
-  addPostRequest.setPost(post);
+  PostsDB.push(post);
 
-  const res = await new Promise((resolve, reject) => {
-    apiClient.addPost(addPostRequest, (error, response) => {
-      if (error) {
-        console.error(error);
-        reject({
-          code: error?.code || 500,
-          message: error?.message || 'something went wrong',
-        });
-      }
-
-      return resolve(response?.toObject());
-    });
-  });
-
-  nextApiResponse.statusCode = 200;
-  nextApiResponse.json(res);
+  nextApiResponse.json(post);
 };
