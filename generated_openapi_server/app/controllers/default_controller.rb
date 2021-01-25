@@ -12,12 +12,21 @@ class DefaultController < ApplicationController
   def get_posts
     # Your code here
 
-    render json: {"message" => "yes, it worked"}
+    render json: {
+      id: 142,
+      title: 'タイトル',
+      content: '記事内容',
+      hoge: 'hogehoge'
+    }
   end
 
   def post
     # Your code here
 
-    render json: {"message" => "yes, it worked"}
+    render json: {
+      id: 142,
+      title: 'タイトル',
+      content: '記事内容'
+    }
   end
 end
